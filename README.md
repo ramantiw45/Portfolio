@@ -1,78 +1,129 @@
-# Raman Tiwari — Personal Portfolio
+# Raman Tiwari — Official Engineering Portfolio
 
-An editorial-grade personal portfolio website showcasing software engineering projects, technical skills, and academic milestones. Engineered with modern vanilla web standards, high-performance micro-interactions, and a bespoke warm copper design system.
+[![GitHub Pages Deployment](https://img.shields.io/badge/deployment-live-success?style=for-the-badge&logo=githubpages&logoColor=white&color=D4874D)](https://ramantiw45.github.io/Portfolio/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-amber.svg?style=for-the-badge&color=C06D3A)](LICENSE)
+[![Zero Dependencies](https://img.shields.io/badge/dependencies-0-brightgreen.svg?style=for-the-badge&color=2B9E6F)](https://ramantiw45.github.io/Portfolio/)
+[![Vanilla Web Standards](https://img.shields.io/badge/built%20with-HTML5%20%7C%20CSS3%20%7C%20ES6+-blue.svg?style=for-the-badge&color=121110)](https://ramantiw45.github.io/Portfolio/)
 
-🔗 **Live Deployment**: [ramantiw45.github.io/Portfolio](https://ramantiw45.github.io/Portfolio/)  
-💼 **LinkedIn**: [linkedin.com/in/ramantiw45](https://www.linkedin.com/in/ramantiw45/)  
-📬 **Contact**: [work.ramantiwari@gmail.com](mailto:work.ramantiwari@gmail.com)  
-
----
-
-## 🧭 Overview & Design Philosophy
-
-This portfolio was designed from the ground up to break away from generic templates, delivering a tactile, editorial digital experience tailored for engineering and backend problem-solving.
-
-- **Warm Metallic Palette**: Built strictly around deep obsidian neutrals, frosted glass accents, and metallic copper tones (`#D4874D` / `#C06D3A`), completely avoiding conventional blue shades for a distinctive visual identity.
-- **Editorial Typography**: Pairing **Outfit** for structured headings, **Newsreader** & **Lora** for editorial warmth and quote-worthy moments, and **Plus Jakarta Sans** for crisp, highly readable interface copy.
-- **Micro-Interactions & Depth**: Multi-layer 3D parallax tracking powered by linear interpolation (`lerp`), smooth cubic-eased counter animations, and SVG progress indicators.
-- **Zero-Dependency Architecture**: Crafted purely with vanilla HTML5, CSS3, and modern ES6+ JavaScript for instant page loads, zero runtime overhead, and optimal browser compatibility.
+> **Live Deployment**: [ramantiw45.github.io/Portfolio](https://ramantiw45.github.io/Portfolio/)  
+> **LinkedIn**: [linkedin.com/in/ramantiw45](https://www.linkedin.com/in/ramantiw45/)  
+> **GitHub**: [github.com/ramantiw45](https://github.com/ramantiw45)  
+> **Inquiries**: [work.ramantiwari@gmail.com](mailto:work.ramantiwari@gmail.com)
 
 ---
 
-## ⚡ Key Engineering Highlights
+## 📌 Executive Summary
 
-### 1. Interactive Parallax & Spatial Depth
-- Dynamic mouse-movement tracking calculating normalized coordinates with smooth interpolation (`requestAnimationFrame`).
-- Multi-layered card composition featuring independent background depth, foreground glass framing, and floating skill badges with proportional physics.
-- Responsive fallback and device orientation sensor support for mobile devices, respecting the user's `prefers-reduced-motion` settings.
+Welcome to the official source repository for **Raman Tiwari's** personal portfolio. Engineered with an editorial philosophy, this website serves as a high-performance digital showcase of software engineering projects, backend architecture, technical competencies, and academic milestones.
 
-### 2. Resilient Contact Handling
-- Asynchronous form submission powered by the FormSubmit AJAX service with structured JSON payloads.
-- Multi-tier validation:
-  - Client-side input format verification (name length, regex email matching, message minimums).
-  - Accessibility-safe honeypot trap (`_honey`) to prevent automated spam without degrading screen-reader experiences.
-  - Context-aware UI feedback states (sending indicators, success confirmations, and error alerts).
-  - Built-in graceful degradation providing an auto-populated direct `mailto:` fallback link if network requests are interrupted.
-
-### 3. Accessible & SEO-Optimized Foundation
-- Semantic HTML5 document hierarchy (`<nav>`, `<section>`, `<article>`, `<footer>`).
-- Direct keyboard navigation support via skip links and complete ARIA attributes.
-- Comprehensive OpenGraph metadata and structured title/description tags for social previews.
+Crafted strictly with **vanilla web standards** (HTML5, CSS3, and modern ES6+ JavaScript), the application delivers a zero-runtime-overhead experience with bespoke warm copper aesthetics, frosted glassmorphism, responsive tactile micro-interactions, and search engine optimization (SEO).
 
 ---
 
-## 📂 Project Structure
+## 📑 Table of Contents
+
+- [Executive Summary](#-executive-summary)
+- [Design Philosophy & UI/UX](#-design-philosophy--uiux)
+- [Featured Engineering Projects](#-featured-engineering-projects)
+- [Technical Architecture & Key Systems](#-technical-architecture--key-systems)
+- [Search Engine Optimization (SEO) & Discoverability](#-search-engine-optimization-seo--discoverability)
+- [Tech Stack Overview](#-tech-stack-overview)
+- [Repository Structure](#-repository-structure)
+- [Local Setup & Development](#-local-setup--development)
+- [Recommended GitHub Repository Topics](#-recommended-github-repository-topics)
+- [License & Contact](#-license--contact)
+
+---
+
+## 🎨 Design Philosophy & UI/UX
+
+This platform was designed from first principles to depart from generic boilerplate templates:
+
+1. **Warm Metallic Copper Palette**: Built around obsidian neutrals (`#2D2820`), creamy linen canvases (`#FAFAF8`), and warm metallic copper accents (`#D4874D` / `#C06D3A`), deliberately avoiding conventional blue tones for a distinctive, tactile identity.
+2. **Editorial Typography System**:
+   - **Outfit**: Geometric sans-serif display headers.
+   - **Newsreader & Lora**: Editorial serif typefaces for story titles, milestone values, and thought highlights.
+   - **Plus Jakarta Sans**: Crisp, legible UI copy, navigation links, and code metadata.
+   - **Caveat**: Handwritten signature branding.
+3. **Multi-Layered Spatial Parallax**: Normalized cursor-tracking depth physics powered by linear interpolation (`lerp`) and `requestAnimationFrame`, with complete gyroscope support for mobile devices.
+4. **Zero-Dependency Core**: Zero npm runtime packages, zero CSS frameworks, zero bundler lock-in. Delivers instant First Contentful Paint (FCP) and near-perfect Core Web Vitals.
+
+---
+
+## 🚀 Featured Engineering Projects
+
+| Project | Domain / Stack | Key Highlights | Repository / Demo |
+|---|---|---|---|
+| **[Enterprise API Rate Limiter](https://github.com/ramantiw45/api-rate-limiter)** | Backend Systems · Edge Gateway<br>*(Java 21, Spring Cloud Gateway, Redis, Resilience4j, Docker, Prometheus, Grafana)* | • Atomic token bucket rate enforcement via Redis Lua scripts.<br>• Constant-time SHA-256 API key authentication with credential stripping.<br>• Circuit breaker fault isolation and automated 5-node Sentinel failover.<br>• Distributed tracing (OpenTelemetry/Zipkin) & provisioned Grafana dashboards. | [Source Code](https://github.com/ramantiw45/api-rate-limiter) |
+| **[Personal Portfolio Website](https://github.com/ramantiw45/Portfolio)** | Frontend · Design Systems<br>*(HTML5, CSS3, JavaScript ES6+, FormSubmit REST API)* | • Bespoke luminous glass design system with CSS custom properties.<br>• Interactive reading progress bar, back-to-top floating glass control, and one-click copy email micro-interaction.<br>• Tactile AJAX contact validation with honeypot spam protection & mailto protocol fallback. | [Live Site](https://ramantiw45.github.io/Portfolio/) · [Source](https://github.com/ramantiw45/Portfolio) |
+
+---
+
+## ⚙️ Technical Architecture & Key Systems
+
+### 1. Interactive Micro-Interactions & State Management
+- **Reading Progress Bar**: A 3px copper gradient indicator fixed to the viewport tracking exact document scroll percentage via passive scroll observers.
+- **Floating Back-to-Top Action**: A glassmorphic button with spring elevation, automatically fading in past the hero section with mobile-safe dismissal.
+- **One-Click Clipboard Utility**: Asynchronous `navigator.clipboard` integration with fallback support, tactile icon morphing, and spring-animated tooltip confirmation.
+- **Contact Form Tactile Feedback**: Real-time tabular character counter (`0 / 500`) with dynamic threshold warnings and input validation indicators.
+
+### 2. Resilient Contact Form Pipeline
+- Non-blocking AJAX submission targeting FormSubmit REST endpoints.
+- Multi-tier validation: name length constraints, strict RFC-compliant email regex, and message bounds.
+- Screen-reader safe honeypot trap (`_honey`) preventing automated spam without CAPTCHA friction.
+- Graceful degradation with dynamic direct `mailto:` protocol generation upon network failure.
+
+---
+
+## 🔍 Search Engine Optimization (SEO) & Discoverability
+
+To maximize organic discoverability on Google, Bing, DuckDuckGo, and GitHub Search:
+
+- **Canonical URL Declaration**: Explicit canonical link pointing to `https://ramantiw45.github.io/Portfolio/` preventing mirror duplication penalties.
+- **Schema.org Structured Data (JSON-LD)**: Complete linked-data entity graph declaring `Person` and `WebSite` schemas for Google Knowledge Graph integration, connecting alumni affiliations, professional profiles, and technical proficiencies.
+- **OpenGraph & Twitter Card Protocols**: Rich media social cards featuring absolute image URLs, dimensions (1024x1024), author metadata, and optimized descriptions for LinkedIn, Twitter/X, and WhatsApp previews.
+- **Robots & Sitemap**: Standard `robots.txt` and `sitemap.xml` files enabling rapid search bot indexing.
+- **Semantic Hierarchy**: Strict HTML5 semantic structure (`<nav>`, `<section>`, `<article>`, `<footer>`) with explicit heading levels (`h1`–`h3`) and descriptive ARIA labels.
+
+---
+
+## 🛠️ Tech Stack Overview
+
+| Layer | Technologies |
+|---|---|
+| **Markup & Semantics** | Semantic HTML5, Scalable Vector Graphics (SVG) |
+| **Styles & Theming** | Vanilla CSS3 (Custom Properties, Glassmorphism, CSS Grid, Flexbox, Animations) |
+| **Interactivity** | Vanilla JavaScript (ES6+, IntersectionObserver, Clipboard API, RequestAnimationFrame) |
+| **Typography** | Google Fonts (*Outfit*, *Newsreader*, *Lora*, *Plus Jakarta Sans*, *Caveat*) |
+| **Contact Backend** | FormSubmit AJAX REST Service + Protocol Fallback |
+| **Hosting & CI/CD** | GitHub Pages (Continuous Deployment from `main`) |
+
+---
+
+## 📂 Repository Structure
 
 ```text
 Portfolio/
-├── assets/                  # High-resolution media, photography, and icons
+├── assets/
+│   ├── 1788676371342.png        # High-resolution profile avatar
+│   ├── favicon.png              # Optimized 64x64 pixel art favicon
+│   └── raman-photo.png          # Supplemental photography asset
 ├── css/
-│   └── style.css            # Complete design system tokens, layout & responsive rules
+│   └── style.css                # Complete design system tokens, typography & responsive layouts
 ├── js/
-│   └── main.js              # Core application logic, observers, parallax & form handling
-├── index.html               # Semantic markup and structure
-├── README.md                # Project documentation
-└── .gitignore               # Multi-platform version control ignore rules
+│   └── main.js                  # Application controllers, observers, parallax, & form logic
+├── index.html                   # Semantic markup, meta headers & JSON-LD structured data
+├── robots.txt                   # Search crawler directives
+├── sitemap.xml                  # XML sitemap for search engine indexing
+├── README.md                    # Repository documentation and SEO hub
+└── .gitignore                   # Multi-platform version control ignore rules
 ```
 
 ---
 
-## 🛠️ Tech Stack
+## 💻 Local Setup & Development
 
-| Domain | Technology |
-|---|---|
-| **Structure** | Semantic HTML5, SVG Vectors |
-| **Styling** | Vanilla CSS3 (Custom Properties, Glassmorphism, CSS Grid & Flexbox) |
-| **Interactivity** | Vanilla JavaScript (ES6+, IntersectionObserver API, RequestAnimationFrame) |
-| **Typography** | Google Fonts (*Outfit*, *Newsreader*, *Plus Jakarta Sans*, *Lora*, *Caveat*) |
-| **Backend / Mail** | FormSubmit AJAX REST API + Mailto Fallback Protocol |
-| **Hosting** | GitHub Pages (Continuous Deployment from `main`) |
-
----
-
-## 🚀 Local Development
-
-To run this project locally without any package manager or build step:
+This repository is built without external build dependencies or package managers:
 
 1. **Clone the repository**:
    ```bash
@@ -80,8 +131,8 @@ To run this project locally without any package manager or build step:
    cd Portfolio
    ```
 
-2. **Serve the project**:
-   You can open `index.html` directly in your browser, or spin up a local development server:
+2. **Serve locally**:
+   Open `index.html` directly in any modern browser, or launch a lightweight local server:
    ```bash
    # Using Python 3
    python -m http.server 3000
@@ -90,11 +141,21 @@ To run this project locally without any package manager or build step:
    npx serve .
    ```
 
-3. Open `http://localhost:3000` in your preferred web browser.
+3. Navigate to `http://localhost:3000`.
+
+---
+
+## 🏷️ Recommended GitHub Repository Topics
+
+To ensure high visibility on GitHub explore feeds and internal repository searches, add these topics in your GitHub repository settings (*About > Edit repository details > Topics*):
+
+```text
+portfolio, developer-portfolio, backend-developer, java, spring-cloud, redis, distributed-systems, system-design, vanilla-javascript, glassmorphism, design-system, tcet, mumbai
+```
 
 ---
 
 ## 📄 License & Attribution
 
-Designed and developed by **Raman Tiwari**.  
-Feel free to explore the code for learning purposes and inspiration.
+This project is licensed under the **MIT License**.  
+Designed, developed, and maintained by **[Raman Tiwari](https://github.com/ramantiw45)**.

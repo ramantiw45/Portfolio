@@ -1,0 +1,8 @@
+# Robots.txt for Raman Tiwari Portfolio
+# https://ramantiw45.github.io/Portfolio/
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://ramantiw45.github.io/Portfolio/sitemap.xml
