@@ -1052,17 +1052,23 @@ section:nth-child(even) {
   position: relative;
   max-width: 800px;
   margin: 0 auto;
-  padding-left: 40px;
+  padding-left: 48px;
 }
 
 .timeline::before {
   content: '';
   position: absolute;
-  left: 15px;
-  top: 0;
-  bottom: 0;
+  left: 20px;
+  transform: translateX(-50%);
+  top: 40px;
+  bottom: 40px;
   width: 2px;
-  background: linear-gradient(to bottom, var(--accent), var(--accent-secondary), var(--highlight));
+  background: linear-gradient(
+    to bottom,
+    var(--accent) 0%,
+    var(--accent-secondary) 85%,
+    rgba(192, 109, 58, 0.25) 100%
+  );
   border-radius: 2px;
 }
 
@@ -1077,15 +1083,23 @@ section:nth-child(even) {
 
 .timeline-dot {
   position: absolute;
-  left: -33px;
-  top: 28px;
-  width: 14px;
-  height: 14px;
+  left: -28px;
+  top: 40px;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
   border: 3px solid var(--bg-primary);
+  box-shadow: 0 0 0 4px rgba(212, 135, 77, 0.18);
   z-index: 2;
   animation: pulseGlow 3s ease-in-out infinite;
+  transition: all var(--t-normal) var(--ease-out);
+}
+
+.timeline-item:hover .timeline-dot {
+  box-shadow: 0 0 0 6px rgba(212, 135, 77, 0.3), 0 0 16px var(--accent-glow);
+  border-color: #FFFFFF;
 }
 
 section:nth-child(even) .timeline-dot {
@@ -2280,17 +2294,21 @@ body.mobile-menu-open .back-to-top {
 
   /* Timeline mobile */
   .timeline {
-    padding-left: 32px;
+    padding-left: 36px;
   }
 
   .timeline::before {
-    left: 11px;
+    left: 14px;
+    top: 32px;
+    bottom: 32px;
   }
 
   .timeline-dot {
-    left: -28px;
-    width: 12px;
-    height: 12px;
+    left: -22px;
+    top: 32px;
+    transform: translate(-50%, -50%);
+    width: 14px;
+    height: 14px;
   }
 
   .timeline-card {
