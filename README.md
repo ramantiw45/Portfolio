@@ -145,14 +145,6 @@ This repository is built without external build dependencies or package managers
 
 ---
 
-## 🏷️ Recommended GitHub Repository Topics
-
-To ensure high visibility on GitHub explore feeds and internal repository searches, add these topics in your GitHub repository settings (*About > Edit repository details > Topics*):
-
-```text
-portfolio, developer-portfolio, backend-developer, java, spring-cloud, redis, distributed-systems, system-design, vanilla-javascript, glassmorphism, design-system, tcet, mumbai
-```
-
 ---
 
 ## 📄 License & Attribution
