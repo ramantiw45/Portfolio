@@ -1186,7 +1186,190 @@ section:nth-child(even) .timeline-dot {
 }
 
 
-/* ---------- 14. ACHIEVEMENTS SECTION ---------- */
+/* ---------- 14. PROJECTS SECTION ---------- */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: var(--space-2xl);
+}
+
+.project-card {
+  padding: var(--space-2xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--t-normal) var(--ease-out),
+              box-shadow var(--t-normal) var(--ease-out);
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
+  opacity: 0;
+  transition: opacity var(--t-normal) var(--ease-out);
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(212, 135, 77, 0.12),
+              0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+.project-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+}
+
+.project-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-soft);
+  border-radius: var(--radius-md);
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.project-meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.project-title {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+  line-height: 1.3;
+}
+
+.project-type {
+  font-size: var(--fs-caption);
+  font-weight: 500;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+
+.project-description {
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.project-tech-tag {
+  padding: 5px 12px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.3px;
+  transition: all var(--t-fast) var(--ease-out);
+}
+
+.project-card:hover .project-tech-tag {
+  border-color: rgba(212, 135, 77, 0.25);
+}
+
+.project-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: var(--space-md) 0 0;
+  border-top: 1px solid var(--glass-border);
+}
+
+.project-highlight {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.project-highlight-icon {
+  font-size: 0.9rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.project-links {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: auto;
+  padding-top: var(--space-sm);
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  color: var(--text-secondary);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: all var(--t-normal) var(--ease-out);
+  letter-spacing: 0.3px;
+}
+
+.project-link:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  transform: translateY(-2px);
+}
+
+.project-link svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.project-link-primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+  color: var(--text-white);
+  border-color: transparent;
+}
+
+.project-link-primary:hover {
+  color: var(--text-white);
+  border-color: transparent;
+  background: linear-gradient(135deg, var(--accent-secondary), var(--accent));
+  box-shadow: 0 6px 20px var(--accent-glow);
+}
+
+
+/* ---------- 15. ACHIEVEMENTS SECTION ---------- */
 .achievements-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -1884,6 +2067,15 @@ section:nth-child(even) .timeline-dot {
   /* Skills mobile */
   .skills-groups {
     grid-template-columns: 1fr;
+  }
+
+  /* Projects mobile */
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card {
+    padding: var(--space-xl);
   }
 
   /* Achievements mobile */
