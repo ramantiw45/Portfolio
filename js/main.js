@@ -36,6 +36,10 @@
     initResumeButton();
     initLanguageBars();
     initProgressRings();
+    initScrollProgress();
+    initBackToTop();
+    initCopyEmail();
+    initFormTactileFeedback();
   }
 
 
@@ -68,7 +72,9 @@
     hamburger.addEventListener('click', () => {
       hamburger.classList.toggle('active');
       mobileMenu.classList.toggle('open');
-      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+      const isOpen = mobileMenu.classList.contains('open');
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+      document.body.classList.toggle('mobile-menu-open', isOpen);
     });
 
     mobileLinks.forEach(link => {
@@ -76,6 +82,7 @@
         hamburger.classList.remove('active');
         mobileMenu.classList.remove('open');
         document.body.style.overflow = '';
+        document.body.classList.remove('mobile-menu-open');
       });
     });
   }
@@ -518,6 +525,164 @@
     );
 
     rings.forEach(ring => observer.observe(ring));
+  }
+
+
+  // ── 12. SCROLL PROGRESS BAR ──
+  function initScrollProgress() {
+    const progressBar = document.getElementById('scrollProgressBar');
+    if (!progressBar) return;
+
+    function updateProgress() {
+      const scrollY = window.scrollY || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      if (docHeight <= 0) {
+        progressBar.style.width = '0%';
+        return;
+      }
+      const progress = Math.min(Math.max((scrollY / docHeight) * 100, 0), 100);
+      progressBar.style.width = progress + '%';
+    }
+
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+  }
+
+
+  // ── 13. FLOATING BACK TO TOP ──
+  function initBackToTop() {
+    const btn = document.getElementById('backToTop');
+    if (!btn) return;
+
+    const SCROLL_TRIGGER = 400;
+
+    function onScroll() {
+      if (window.scrollY > SCROLL_TRIGGER) {
+        btn.classList.add('visible');
+      } else {
+        btn.classList.remove('visible');
+      }
+    }
+
+    btn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: prefersReducedMotion ? 'auto' : 'smooth'
+      });
+    });
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+
+  // ── 14. ONE-CLICK COPY EMAIL WITH TOOLTIP ──
+  function initCopyEmail() {
+    const btn = document.getElementById('copyEmailBtn');
+    if (!btn) return;
+
+    const email = 'work.ramantiwari@gmail.com';
+    let timeoutId = null;
+
+    btn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      let copied = false;
+      if (navigator.clipboard && window.isSecureContext) {
+        try {
+          await navigator.clipboard.writeText(email);
+          copied = true;
+        } catch (err) {
+          copied = fallbackCopy(email);
+        }
+      } else {
+        copied = fallbackCopy(email);
+      }
+
+      if (copied) {
+        btn.classList.add('copied');
+        btn.setAttribute('aria-label', 'Email address copied to clipboard');
+        if (timeoutId) clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => {
+          btn.classList.remove('copied');
+          btn.setAttribute('aria-label', 'Copy email address to clipboard');
+        }, 2200);
+      }
+    });
+
+    function fallbackCopy(text) {
+      try {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.left = '-9999px';
+        textarea.style.top = '-9999px';
+        textarea.setAttribute('readonly', '');
+        document.body.appendChild(textarea);
+        textarea.focus();
+        textarea.select();
+        const success = document.execCommand('copy');
+        document.body.removeChild(textarea);
+        return success;
+      } catch (err) {
+        return false;
+      }
+    }
+  }
+
+
+  // ── 15. CONTACT FORM CHARACTER COUNTER & TACTILE FEEDBACK ──
+  function initFormTactileFeedback() {
+    const messageInput = document.getElementById('contactMessage');
+    const charCounter = document.getElementById('charCounter');
+    const charCountEl = document.getElementById('charCount');
+    const maxChars = 500;
+
+    if (messageInput && charCounter && charCountEl) {
+      function updateCounter() {
+        const len = messageInput.value.length;
+        charCountEl.textContent = len;
+
+        if (len >= maxChars) {
+          charCounter.className = 'char-counter limit';
+        } else if (len >= maxChars * 0.85) {
+          charCounter.className = 'char-counter warning';
+        } else {
+          charCounter.className = 'char-counter';
+        }
+      }
+
+      messageInput.addEventListener('input', updateCounter);
+      updateCounter();
+    }
+
+    const form = document.getElementById('contactForm');
+    if (!form) return;
+
+    const inputs = form.querySelectorAll('.form-input, .form-textarea');
+    inputs.forEach(input => {
+      input.addEventListener('blur', () => {
+        if (input.value.trim().length > 0) {
+          if (input.checkValidity()) {
+            input.classList.add('is-valid');
+            input.classList.remove('is-invalid');
+          } else {
+            input.classList.add('is-invalid');
+            input.classList.remove('is-valid');
+          }
+        } else {
+          input.classList.remove('is-valid', 'is-invalid');
+        }
+      });
+
+      input.addEventListener('input', () => {
+        if (input.classList.contains('is-invalid') && input.checkValidity()) {
+          input.classList.remove('is-invalid');
+          input.classList.add('is-valid');
+        }
+      });
+    });
   }
 
 
