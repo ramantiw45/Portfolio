@@ -534,7 +534,7 @@ section:nth-child(even) {
 
 /* Signature logo */
 .nav-signature {
-  font-family: 'Caveat', cursive;
+  font-family: var(--font-signature);
   font-size: 1.8rem;
   font-weight: 700;
   color: var(--text-primary);
@@ -967,8 +967,10 @@ section:nth-child(even) {
   gap: var(--space-sm);
   color: var(--text-muted);
   font-size: var(--fs-caption);
-  font-family: var(--font-heading);
-  letter-spacing: 1px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
   opacity: 0;
   animation: fadeIn 1s ease 1.5s forwards;
   z-index: 2;
@@ -1019,6 +1021,7 @@ section:nth-child(even) {
   font-family: var(--font-heading);
   font-size: 2rem;
   font-weight: 700;
+  font-variant-numeric: lining-nums tabular-nums;
   color: var(--accent);
   line-height: 1;
   margin-bottom: var(--space-xs);
@@ -1104,6 +1107,8 @@ section:nth-child(even) .timeline-dot {
 
 .timeline-title {
   font-size: var(--fs-h3);
+  font-weight: 600;
+  letter-spacing: -0.015em;
   color: var(--text-primary);
   margin-bottom: var(--space-xs);
 }
@@ -1142,6 +1147,7 @@ section:nth-child(even) .timeline-dot {
 }
 
 .skill-group-title {
+  font-family: var(--font-body);
   font-size: var(--fs-small);
   font-weight: 600;
   color: var(--text-muted);
@@ -1170,8 +1176,10 @@ section:nth-child(even) .timeline-dot {
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-sm);
+  font-family: var(--font-body);
   font-size: var(--fs-small);
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: 0.2px;
   color: var(--text-primary);
   transition: all var(--t-normal) var(--ease-out);
   cursor: default;
@@ -1252,7 +1260,8 @@ section:nth-child(even) .timeline-dot {
 .project-title {
   font-family: var(--font-heading);
   font-size: 1.3rem;
-  font-weight: 700;
+  font-weight: 600;
+  letter-spacing: -0.015em;
   color: var(--text-primary);
   margin-bottom: 2px;
   line-height: 1.3;
@@ -1260,7 +1269,7 @@ section:nth-child(even) .timeline-dot {
 
 .project-type {
   font-size: var(--fs-caption);
-  font-weight: 500;
+  font-weight: 600;
   color: var(--accent);
   text-transform: uppercase;
   letter-spacing: 1.2px;
@@ -1450,6 +1459,7 @@ section:nth-child(even) .timeline-dot {
   font-family: var(--font-heading);
   font-size: 1.25rem;
   font-weight: 700;
+  font-variant-numeric: lining-nums tabular-nums;
   color: var(--accent);
   line-height: 1;
 }
@@ -1518,7 +1528,14 @@ section:nth-child(even) .timeline-dot {
 }
 
 .activity-content strong {
+  font-family: var(--font-heading);
+  font-size: 1.12rem;
+  font-weight: 600;
   color: var(--text-primary);
+  line-height: 1.4;
+  display: block;
+  margin-bottom: var(--space-xs);
+  letter-spacing: -0.01em;
 }
 
 .activity-stats {
@@ -1603,6 +1620,8 @@ section:nth-child(even) .timeline-dot {
 
 .contact-info-title {
   font-size: var(--fs-h3);
+  font-weight: 600;
+  letter-spacing: -0.015em;
   color: var(--text-primary);
   margin-bottom: var(--space-md);
 }
@@ -1840,6 +1859,7 @@ section:nth-child(even) .timeline-dot {
     linear-gradient(var(--bg-primary), var(--bg-primary)) padding-box,
     linear-gradient(135deg, var(--bg-tertiary), var(--bg-tertiary)) border-box;
   color: var(--text-primary);
+  font-family: var(--font-body);
   font-size: var(--fs-body);
   transition: all var(--t-normal) ease;
 }
