@@ -9,6 +9,18 @@
 secrets.*
 credentials.*
 
+# Personal & Sensitive Assets
+assets/personal/
+assets/private/
+assets/raw/
+*personal*
+*private*
+*.raw
+*.cr2
+*.nef
+*.heic
+*.dng
+
 # Operating System Files
 .DS_Store
 .DS_Store?

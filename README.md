@@ -105,9 +105,8 @@ To maximize organic discoverability on Google, Bing, DuckDuckGo, and GitHub Sear
 ```text
 Portfolio/
 ├── assets/
-│   ├── 1788676371342.png        # High-resolution profile avatar
-│   ├── favicon.png              # Optimized 64x64 pixel art favicon
-│   └── raman-photo.png          # Supplemental photography asset
+│   ├── avatar.png               # Pixel art profile portrait avatar
+│   └── favicon.png              # Optimized 64x64 pixel art favicon
 ├── css/
 │   └── style.css                # Complete design system tokens, typography & responsive layouts
 ├── js/
