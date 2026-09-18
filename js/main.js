@@ -26,7 +26,6 @@
   function init() {
     initNavbar();
     initMobileMenu();
-    initThemeToggle();
     initSmoothScroll();
     initScrollReveal();
     initDepthPhoto();
@@ -687,79 +686,7 @@
   }
 
 
-  // ── 16. THEME TOGGLE (OBSIDIAN COPPER DARK / LIGHT) ──
-  function initThemeToggle() {
-    const desktopToggle = document.getElementById('themeToggle');
-    const mobileToggle = document.getElementById('themeToggleMobile');
-    const drawerToggle = document.getElementById('themeToggleDrawer');
-    const drawerLabel = document.getElementById('themeDrawerLabel');
-    const storageKey = 'raman-portfolio-theme';
 
-    const systemDarkQuery = window.matchMedia('(prefers-color-scheme: dark)');
-
-    function getPreferredTheme() {
-      const saved = localStorage.getItem(storageKey);
-      if (saved === 'dark' || saved === 'light') return saved;
-      return systemDarkQuery.matches ? 'dark' : 'light';
-    }
-
-    function applyTheme(theme, animate = false) {
-      if (animate) {
-        document.documentElement.classList.add('theme-transitioning');
-      }
-
-      document.documentElement.setAttribute('data-theme', theme);
-
-      const isDark = theme === 'dark';
-      const labelText = isDark ? 'Switch to light mode' : 'Switch to dark mode';
-      const drawerText = isDark ? 'Appearance: Dark' : 'Appearance: Light';
-
-      [desktopToggle, mobileToggle].forEach(btn => {
-        if (btn) {
-          btn.setAttribute('aria-label', labelText);
-          btn.setAttribute('title', labelText);
-          btn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
-        }
-      });
-
-      if (drawerToggle) {
-        drawerToggle.setAttribute('aria-label', labelText);
-      }
-      if (drawerLabel) {
-        drawerLabel.textContent = drawerText;
-      }
-
-      if (animate) {
-        window.setTimeout(() => {
-          document.documentElement.classList.remove('theme-transitioning');
-        }, 320);
-      }
-    }
-
-    function toggleTheme() {
-      const current = document.documentElement.getAttribute('data-theme') || getPreferredTheme();
-      const next = current === 'dark' ? 'light' : 'dark';
-      localStorage.setItem(storageKey, next);
-      applyTheme(next, true);
-    }
-
-    // Bind click events to all buttons
-    [desktopToggle, mobileToggle, drawerToggle].forEach(btn => {
-      if (btn) {
-        btn.addEventListener('click', toggleTheme);
-      }
-    });
-
-    // Listen to system theme changes if user hasn't explicitly set preference
-    systemDarkQuery.addEventListener('change', (e) => {
-      if (!localStorage.getItem(storageKey)) {
-        applyTheme(e.matches ? 'dark' : 'light', true);
-      }
-    });
-
-    // Sync initial state on load
-    applyTheme(getPreferredTheme(), false);
-  }
 
 
   // ── RESPONSIVE LISTENER ──
